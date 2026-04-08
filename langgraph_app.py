@@ -84,15 +84,19 @@ app = graph.compile()
 # === 執行測試 ===
 if __name__ == "__main__":
 
-    print("=== LangGraph + MCP 整合測試 ===\n")
+    async def main():
+        print("=== LangGraph + MCP 整合測試 ===\n")
 
-    result = app.invoke({
-        "category": "高處墜落",
-        "messages": [],
-    })
+        # 因為 lookup_regulation 是 async function，所以要用 ainvoke
+        result = await app.ainvoke({
+            "category": "高處墜落",
+            "messages": [],
+        })
 
-    print("--- 流程紀錄 ---")
-    for msg in result["messages"]:
-        print(f"  {msg}")
+        print("--- 流程紀錄 ---")
+        for msg in result["messages"]:
+            print(f"  {msg}")
 
-    print(f"\n--- 法規查詢結果 ---\n{result['regulation']}")
+        print(f"\n--- 法規查詢結果 ---\n{result['regulation']}")
+
+    asyncio.run(main())
