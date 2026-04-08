@@ -1,6 +1,8 @@
 """示範：用 Gemini 搭配同一個 MCP Server——Server 不用改任何一行"""
 import asyncio
 import json
+from dotenv import load_dotenv
+load_dotenv()
 from google import genai
 from google.genai import types
 from mcp import ClientSession, StdioServerParameters

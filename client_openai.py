@@ -1,6 +1,8 @@
 """示範：用 OpenAI 搭配 MCP Server 做設備查詢助手"""
 import asyncio
 import json
+from dotenv import load_dotenv
+load_dotenv()
 from openai import OpenAI
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
