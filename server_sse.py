@@ -1,6 +1,6 @@
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("工地設備查詢系統", transport="sse")
+mcp = FastMCP("工地設備查詢系統")
 
 EQUIPMENT_DB = {
     "crane-01": {"name": "塔式起重機 A", "location": "B 棟工區", "status": "運轉中", "issues": []},
@@ -28,4 +28,4 @@ def list_equipment_by_status(status: str) -> str:
 
 
 if __name__ == "__main__":
-    mcp.run(transport="sse", host="0.0.0.0", port=8000)
+    mcp.run(transport="sse")
