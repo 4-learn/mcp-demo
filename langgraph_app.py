@@ -34,3 +34,20 @@ async def lookup_regulation(state: dict) -> dict:
         "regulation": result,
         "messages": [f"📋 法規查詢結果：\n{result}"],
     }
+
+
+# 單獨執行測試：python langgraph_app.py
+if __name__ == "__main__":
+
+    async def test():
+        # 模擬一個 LangGraph state，測試 lookup_regulation 這個 Node
+        fake_state = {"category": "高處墜落"}
+        print(f"測試輸入：category = {fake_state['category']}\n")
+
+        result = await lookup_regulation(fake_state)
+
+        print("=== Node 回傳的 State ===")
+        print(f"regulation:\n{result['regulation']}\n")
+        print(f"messages:\n{result['messages'][0]}")
+
+    asyncio.run(test())
